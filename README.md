@@ -67,6 +67,16 @@ Codegen is Playwright's built-in recorder; no separate codegen dependency is req
 
 Failure screenshots and videos are written to test-results; HTML reports go to playwright-report. CI retries twice and captures a trace on the first retry.
 
+## Continuous integration
+
+`.github/workflows/demo-ci.yml` runs for pull requests targeting `master`, pushes to `master`, merge queues, and manual runs. It uses the Node version in `.nvmrc` and installs the locked dependencies with `npm ci`.
+
+The workflow runs ESLint, TypeScript checks, a production build, and the Chromium Playwright tests. Playwright starts the React demo automatically. The `playwright-report` artifact contains the HTML report and test evidence, including failure traces after retries; it is uploaded even when tests fail and retained for 14 days. Download and extract it from the Actions run, then open `playwright-report/index.html`.
+
+To enforce checks before merging, configure a GitHub branch protection rule or ruleset targeting `master`: require pull requests, require the `Demo checks` status check, and require branches to be up to date (or use a merge queue). Restrict bypass permissions as appropriate. The workflow file alone does not enforce branch protection. Select the check after the workflow has run once. These repository settings must be enabled on GitHub.
+
+Run the same checks locally with `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test`.
+
 ## Test tags
 
 Tests use Playwright's `tag` metadata:
