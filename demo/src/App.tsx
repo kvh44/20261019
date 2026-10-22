@@ -9,6 +9,8 @@ export default function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState<Task[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [photoId, setPhotoId] = useState(() => crypto.randomUUID());
+  const [photoStatus, setPhotoStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
   function addTask(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,6 +25,22 @@ export default function App() {
 
   return (
     <main>
+      <section aria-label="Random photo" className="photo-section">
+        <img
+          key={photoId}
+          src={`https://picsum.photos/620/360?random=${photoId}`}
+          alt="Random photograph from Lorem Picsum"
+          width={620}
+          height={360}
+          onLoad={() => setPhotoStatus('loaded')}
+          onError={() => setPhotoStatus('error')}
+          hidden={photoStatus === 'error'}
+        />
+        <p role="status">
+          {photoStatus === 'loading' && 'Loading photo…'}
+          {photoStatus === 'error' && 'Unable to load the photo. Try again.'}
+        </p>
+      </section>
       <h1>My tasks</h1>
       <p>Add tasks to practice recording and running browser tests.</p>
       <form onSubmit={addTask}>
@@ -40,6 +58,7 @@ export default function App() {
       <ul aria-label="Tasks" aria-live="polite">
         {tasks.map(({ id, text }) => <li key={id}>{text}</li>)}
       </ul>
+    
     </main>
   );
 }

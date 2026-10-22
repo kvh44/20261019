@@ -19,3 +19,7 @@ input, button { font: inherit; padding: 10px; border-radius: 6px; }
 input { border: 1px solid #8592a8; max-width: 100%; box-sizing: border-box; }
 button { border: 0; background: #2457d6; color: white; cursor: pointer; }
 li { padding: 8px 0; }
+
+.photo-section { margin-top: 24px; }
+.photo-section img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.photo-section img[hidden] { display: none; }
