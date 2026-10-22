@@ -2,10 +2,10 @@ name: Demo CI
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main, master]
     types: [opened, synchronize, reopened, ready_for_review, edited]
   push:
-    branches: [master]
+    branches: [main, master]
   merge_group:
   workflow_dispatch:
 
@@ -60,7 +60,7 @@ jobs:
           retention-days: 14
 
   required:
-    # Require this status check in the master branch protection rule.
+    # Require this status check in the main/master branch protection rule.
     # Workflow YAML alone cannot disable GitHub's merge button.
     name: Demo checks
     if: ${{ always() }}
