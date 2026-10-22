@@ -9,7 +9,7 @@ export default function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState<Task[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [photoId, setPhotoId] = useState(() => crypto.randomUUID());
+  const [photoId] = useState(() => crypto.randomUUID());
   const [photoStatus, setPhotoStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
   function addTask(event: FormEvent<HTMLFormElement>) {
@@ -26,6 +26,12 @@ export default function App() {
   return (
     <main>
       <section aria-label="Random photo" className="photo-section">
+        <div className="photo-frame" aria-busy={photoStatus === 'loading'}>
+        {photoStatus === 'loading' && (
+          <div className="photo-loading" role="status" aria-label="Loading photo">
+            <span className="photo-spinner" aria-hidden="true" />
+          </div>
+        )}
         <img
           key={photoId}
           src={`https://picsum.photos/620/360?random=${photoId}`}
@@ -35,9 +41,10 @@ export default function App() {
           onLoad={() => setPhotoStatus('loaded')}
           onError={() => setPhotoStatus('error')}
           hidden={photoStatus === 'error'}
+          style={{ visibility: photoStatus === 'loading' ? 'hidden' : 'visible' }}
         />
+        </div>
         <p role="status">
-          {photoStatus === 'loading' && 'Loading photo…'}
           {photoStatus === 'error' && 'Unable to load the photo. Try again.'}
         </p>
       </section>
