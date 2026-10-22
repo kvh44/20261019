@@ -9,11 +9,11 @@ export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.{js,mjs,ts}'],
+    files: ['**/*.{js,mjs,ts,mts}'],
     languageOptions: { globals: globals.node },
   },
   {
-    files: ['demo/src/**/*.jsx'],
+    files: ['demo/src/**/*.{jsx,tsx}'],
     ...react.configs.flat.recommended,
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
@@ -29,3 +29,4 @@ export default [
     },
   },
 ];
+
