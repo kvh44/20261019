@@ -1,42 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Playwright practice</title>
-  <style>
-    body { font: 18px system-ui; background: #f2f5fa; color: #17233b; margin: 0; padding: 60px 24px; }
-    main { max-width: 620px; margin: auto; background: white; padding: 32px; border-radius: 16px; }
-    label { display: block; margin-bottom: 8px; }
-    input, button { font: inherit; padding: 10px; border-radius: 6px; }
-    input { border: 1px solid #8592a8; max-width: 100%; box-sizing: border-box; }
-    button { border: 0; background: #2457d6; color: white; cursor: pointer; }
-    li { padding: 8px 0; }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>My tasks</h1>
-    <p>Add tasks to practice recording and running browser tests.</p>
-    <form>
-      <label for="task">New task</label>
-      <input id="task" autocomplete="off" placeholder="What will you learn?">
-      <button type="submit">Add task</button>
-    </form>
-    <ul aria-label="Tasks" aria-live="polite"></ul>
-  </main>
-  <script>
-    const input = document.querySelector('#task');
-    document.querySelector('form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const value = input.value.trim();
-      if (!value) return;
-      const item = document.createElement('li');
-      item.textContent = value;
-      document.querySelector('ul').append(item);
-      input.value = '';
-      input.focus();
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Playwright practice</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

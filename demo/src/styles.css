@@ -1,0 +1,21 @@
+body {
+  font: 18px system-ui;
+  background: #f2f5fa;
+  color: #17233b;
+  margin: 0;
+  padding: 60px 24px;
+}
+
+main {
+  max-width: 620px;
+  margin: auto;
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+}
+
+label { display: block; margin-bottom: 8px; }
+input, button { font: inherit; padding: 10px; border-radius: 6px; }
+input { border: 1px solid #8592a8; max-width: 100%; box-sizing: border-box; }
+button { border: 0; background: #2457d6; color: white; cursor: pointer; }
+li { padding: 8px 0; }
