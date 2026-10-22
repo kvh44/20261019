@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   // The demo tests target Chromium by default; select other browsers explicitly.
   webServer: externalURL ? undefined : {
-    command: 'node demo/server.mjs',
+    command: 'npm run demo',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 15_000,

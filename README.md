@@ -1,4 +1,6 @@
-# TypeScript + Playwright Test + Codegen
+# React demo + TypeScript Playwright tests
+
+The demo is a React application written in JavaScript (JSX), served by Vite. Browser tests remain in TypeScript.
 
 Requires Node.js 24 with npm. Open this folder in VS Code and install the recommended Playwright extension.
 
@@ -11,9 +13,20 @@ npm run typecheck
 npm test
 ```
 
-Keep the generated package-lock.json in Git. After the initial install, use `npm ci` for reproducible installs. Dependencies could not be downloaded in the creation environment, so a lockfile is not included.
+Keep package-lock.json in Git. After the initial install, use `npm ci` for reproducible installs.
 
-The two sample tests run against the included local task page. Playwright starts and stops its server automatically. The default test command uses Chromium.
+The sample tests run against the included React task page. Playwright starts and stops the Vite server automatically. The default test command uses Chromium.
+
+## React development
+
+Run `npm run dev` (or `npm run demo`) and open http://127.0.0.1:3000. Vite updates the page as you edit the React components.
+
+- `demo/src/App.jsx`: task form and list, managed with React state.
+- `demo/src/main.jsx`: React entry point.
+- `demo/src/styles.css`: application styles.
+- `demo/vite.config.mjs`: development and build settings.
+
+Run `npm run build` to create a production bundle in `demo/dist`, then `npm run preview` to serve it locally. Stop the development server before previewing, since both use port 3000.
 
 ## Record a test with codegen
 
