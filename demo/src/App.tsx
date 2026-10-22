@@ -49,7 +49,7 @@ export default function App() {
         </p>
       </section>
       <h1>My tasks</h1>
-      <p>Add tasks to practice recording and running browser tests.</p>
+      <p>Add tasks to practice.</p>
       <form onSubmit={addTask}>
         <label htmlFor="task">New task</label>
         <input
