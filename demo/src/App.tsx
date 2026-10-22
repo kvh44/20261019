@@ -1,11 +1,16 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
+
+interface Task {
+  id: string;
+  text: string;
+}
 
 export default function App() {
   const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]);
-  const inputRef = useRef(null);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  function addTask(event) {
+  function addTask(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const text = task.trim();
     if (!text) return;
@@ -38,3 +43,4 @@ export default function App() {
     </main>
   );
 }
+

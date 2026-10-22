@@ -6,10 +6,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "demo": "vite --config demo/vite.config.mjs",
+    "demo": "vite --config demo/vite.config.mts",
     "dev": "npm run demo",
-    "build": "vite build --config demo/vite.config.mjs",
-    "preview": "vite preview --config demo/vite.config.mjs",
+    "build": "npm run typecheck && vite build --config demo/vite.config.mts",
+    "preview": "vite preview --config demo/vite.config.mts",
     "test": "playwright test --project=chromium",
     "test:headed": "playwright test --project=chromium --headed",
     "test:ui": "playwright test --project=chromium --ui",
@@ -20,13 +20,15 @@
     "browsers": "playwright install chromium",
     "browsers:all": "playwright install",
     "report": "playwright show-report",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --project demo/tsconfig.json",
     "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
     "@playwright/test": "latest",
     "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.37.5",
