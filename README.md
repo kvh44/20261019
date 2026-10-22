@@ -67,6 +67,23 @@ Codegen is Playwright's built-in recorder; no separate codegen dependency is req
 
 Failure screenshots and videos are written to test-results; HTML reports go to playwright-report. CI retries twice and captures a trace on the first retry.
 
+## Test tags
+
+Tests use Playwright's `tag` metadata:
+
+- `@tasks`: all task feature tests.
+- `@smoke`: basic task creation and input clearing.
+- `@regression`: blank input, keyboard submission, and multiple tasks.
+- `@recorded`: the test recorded with codegen.
+
+Run a selected group or exclude recorded tests:
+
+```powershell
+npm test -- --grep "@smoke"
+npm test -- --grep "@regression"
+npm test -- --grep-invert "@recorded"
+```
+
 ## Test your application
 
 Add tests under `tests/`, then set BASE_URL for the current PowerShell session:
@@ -79,3 +96,4 @@ npm test -- tests/my-app.spec.ts
 The demo server is disabled when BASE_URL is set. The sample tasks tests are specific to the included demo; select your own test file when targeting another application. Clear the setting with `Remove-Item Env:BASE_URL` to use the demo again.
 
 Official references: https://playwright.dev/docs/intro and https://playwright.dev/docs/codegen
+

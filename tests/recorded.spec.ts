@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { TasksPage } from './pages/TasksPage';
 
-test('adds several tasks using keyboard and button', async ({ page }) => {
+test('adds several tasks using keyboard and button', { tag: ['@tasks', '@regression', '@recorded'] }, async ({ page }) => {
   const tasksPage = new TasksPage(page);
   await tasksPage.goto();
 

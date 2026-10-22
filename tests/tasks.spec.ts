@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { TasksPage } from './pages/TasksPage';
 
-test('adds a task and clears the input', async ({ page }) => {
+test('adds a task and clears the input', { tag: ['@tasks', '@smoke'] }, async ({ page }) => {
   const tasksPage = new TasksPage(page);
   await tasksPage.goto();
 
@@ -11,7 +11,7 @@ test('adds a task and clears the input', async ({ page }) => {
   await expect(tasksPage.newTaskInput).toBeEmpty();
 });
 
-test('rejects blank tasks and supports keyboard submission', async ({ page }) => {
+test('rejects blank tasks and supports keyboard submission', { tag: ['@tasks', '@regression'] }, async ({ page }) => {
   const tasksPage = new TasksPage(page);
   await tasksPage.goto();
 
